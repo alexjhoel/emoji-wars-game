@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
 
 
-    float currentHealth = 20;
+    float currentHealth = 21;
     float timer;
 
     bool attacking = false;
