@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="181.21027mm"
+   height="117.31152mm"
+   viewBox="0 0 181.21027 117.31152"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="Sprites\selectorUI.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   sodipodi:docname="selectorUICorner.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.84096521"
+     inkscape:cx="445.91619"
+     inkscape:cy="154.58428"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true" />
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter7346"
+       x="-0.22281258"
+       y="-0.22037747"
+       width="1.4456252"
+       height="1.4407549">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood7336" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite7338" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="7.47664"
+         result="blur"
+         id="feGaussianBlur7340" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset7342" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite7344" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter7358"
+       x="-0.45186596"
+       y="-0.22063003"
+       width="1.9037319"
+       height="1.4412601">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood7348" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite7350" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="7.47664"
+         result="blur"
+         id="feGaussianBlur7352" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset7354" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite7356" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(52.209619,5.4856768)">
+    <rect
+       style="fill:none;stroke-width:2.84901"
+       id="rect234"
+       width="16.017767"
+       height="1.3348138"
+       x="10.678511"
+       y="28.920965" />
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:6.00001;stroke-dasharray:none;filter:url(#filter7346)"
+       id="rect6404"
+       width="80.533768"
+       height="81.423645"
+       x="-34.265682"
+       y="12.458261"
+       rx="8.6212339e-07"
+       ry="8.6212344e-07" />
+    <path
+       id="path6465"
+       style="fill:#ffffff;stroke-width:6.00001;filter:url(#filter7358)"
+       d="M 71.345959,12.50477 V 93.835206 A 40.711823,40.711823 0 0 0 111.05671,53.169988 40.711823,40.711823 0 0 0 71.345959,12.50477 Z" />
+  </g>
+</svg>
