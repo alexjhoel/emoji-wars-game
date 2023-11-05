@@ -38,7 +38,7 @@ public class TroopController : MonoBehaviour
         timer += Time.deltaTime;
         int layerMask = 1 << 6;
         RaycastHit2D ray;
-        if (!needsEnemy || timer > fireTime && (ray = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, layerMask)))
+        if (!needsEnemy || timer > fireTime && (ray = Physics2D.Raycast(transform.position, Vector2.up, stats.range, layerMask)))
         {
             GetComponent<Animator>().SetTrigger(shootAnimationName);
             fireTime = timer + attackSpeed;
