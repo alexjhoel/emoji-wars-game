@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 5.12}
+  m_Size: {x: 0.7378069, y: 5.12}
   m_EdgeRadius: 0
 --- !u!1 &3571959281911349719
 GameObject:
@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34191662, y: 0.8569381}
+  m_Size: {x: 0.3, y: 0.85}
   m_EdgeRadius: 0
 --- !u!95 &3571959281911349718
 Animator:
@@ -234,8 +234,8 @@ MonoBehaviour:
   needsEnemy: 1
   shootAnimationName: Shooter_Shoot
   stats:
-    damage: 10
-    speed: 3
+    damage: 15
+    speed: 20
     range: 5
     areaOfEffect: 0
     type: 0
@@ -287,7 +287,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.17, y: 0.17, z: 17}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3571959281911349716}
   m_RootOrder: 0
