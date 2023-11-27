@@ -79,6 +79,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         //Recibir daño por parte de proyectiles
         currentHealth -= damage;
         //Debug.Log("Enemigo: " + currentHealth);
+        //
         if (currentHealth <= 0)
         {
             //Efecto visual del fantasma
