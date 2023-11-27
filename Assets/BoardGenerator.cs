@@ -39,7 +39,6 @@ public class BoardGenerator : MonoBehaviour
 
         foreach (Transform o in children)
         {
-            if(gameObject.transform != o)
             for (int i = 0; i < rows; i++)
             {
                 Instantiate(cellPrefab, o).transform.localPosition = new Vector3(0, i*offset - rows / 2 * offset, 0);
