@@ -40,11 +40,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void FixedUpdate()
-    {
         //Este operador << se conoce como bitshift, y es para crear mascaras de colisiones, esto es que definimos cuales layers
         //queremos detectar como validos para colisionar y disparar proyectil. En este caso decimos que queremos colisionar solo
         //con el layer 7, que corresponde a tropas alidas.
@@ -55,16 +50,16 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             //Raycast manda un rayo de largo dependiendo del rango establecido en ProjectileStats, a la primera tropa que colisione
             //restablece el timer de ataque, y manda el trigger para la animación de ataque
-            if (timer > fireTime)
+            if(timer > fireTime)
             {
                 GetComponent<Animator>().SetTrigger(attackAnimationName);
                 fireTime = timer + attackSpeed;
             }
-
+            
             return;
 
         }
-        transform.position = transform.position + new Vector3(0, -movementCurve.Evaluate(timer % 2 / 2f) * movementSpeed / 1000, 0);
+        transform.position = transform.position + new Vector3(0,-movementCurve.Evaluate(timer % 2 / 2f) * movementSpeed / 1000,0);
     }
 
     public void CreateProjectile()
@@ -78,7 +73,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         //Recibir daño por parte de proyectiles
         currentHealth -= damage;
-        //Debug.Log("Enemigo: " + currentHealth);
+        Debug.Log("Enemigo: " + currentHealth);
         if (currentHealth <= 0)
         {
             //Efecto visual del fantasma
