@@ -9,12 +9,12 @@ public class SelectedTroopPivot : MonoBehaviour
     [SerializeField]
     BoardGenerator boardGenerator;
 
-    [SerializeField]
     GameObject troopChildGameObject;
 
     GameObject troopPrefab;
 
     bool dragEnabled;
+    bool cellDetected;
 
     Vector3 cellPosition;
 
@@ -42,29 +42,45 @@ public class SelectedTroopPivot : MonoBehaviour
             Debug.Log("Touch Position : " + touch.position);
         }
 
-        troopChildGameObject.transform.position = cellPosition;
+        Vector2 troopChildPosition = new Vector2
+            (
+                Mathf.Round(transform.position.x / (boardGenerator.cellSize.x + boardGenerator.offset)) * (boardGenerator.cellSize.x + boardGenerator.offset),
+                Mathf.Round(transform.position.y / (boardGenerator.cellSize.y + boardGenerator.offset)) * (boardGenerator.cellSize.y + boardGenerator.offset) - 0.38f
+            );
+
+        troopChildGameObject.transform.position = troopChildPosition;
+
+        bool insideBoard =
+            troopChildPosition.x > -1 * (boardGenerator.cellSize.x + boardGenerator.offset) - boardGenerator.columns / 2 * (boardGenerator.cellSize.x + boardGenerator.offset) &&
+            troopChildPosition.x < (boardGenerator.columns) * (boardGenerator.cellSize.x + boardGenerator.offset) - boardGenerator.columns / 2 * (boardGenerator.cellSize.x + boardGenerator.offset) &&
+            troopChildPosition.y < (boardGenerator.rows - 1) * (boardGenerator.cellSize.y + boardGenerator.offset) - boardGenerator.rows / 2 * (boardGenerator.cellSize.y + boardGenerator.offset) &&
+            troopChildPosition.y > -1 * (boardGenerator.cellSize.y + boardGenerator.offset) - boardGenerator.rows / 2 * (boardGenerator.cellSize.y + boardGenerator.offset)
+        ;
+
+        troopChildGameObject.SetActive(insideBoard);
+
+        if (dragEnabled && insideBoard && Input.GetMouseButtonUp(0))
+        {
+            dragEnabled = false;
+            Destroy(troopChildGameObject);
+            Instantiate(troopPrefab, null, true).transform.position = troopChildPosition;
+        }
 
 
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(!dragEnabled || !Input.GetMouseButton(0)) return;
-        cellPosition = collision.transform.position;
-
-        troopChildGameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        troopChildGameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0f);
-    }
-
-
 
     public void SetTroop(GameObject troopPrefab)
     {
+       cellDetected = false;
        dragEnabled = true;
        this.troopPrefab = troopPrefab;
+       troopChildGameObject = Instantiate(troopPrefab, transform, false);
+       troopChildGameObject.GetComponentInChildren<Animator>().enabled = false;
+       troopChildGameObject.GetComponent<TroopController>().enabled = false;
+       troopChildGameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        troopChildGameObject.GetComponentsInChildren<SpriteRenderer>()[0].color = new Color(255, 255, 255, 0.7f);
+        troopChildGameObject.GetComponentsInChildren<SpriteRenderer>()[1].color = new Color(255, 255, 255, 0.7f);
+
     }
 }

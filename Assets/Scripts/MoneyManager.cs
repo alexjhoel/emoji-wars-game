@@ -14,9 +14,6 @@ public class MoneyManager : MonoBehaviour
     [SerializeField]
     private TMP_Text moneyText ;
 
-    [SerializeField]
-    private SelectedTroopPivot selectedTroopPivot;
-
 
     private float money = 0;
     private float moneyAdd = 1;
@@ -75,12 +72,5 @@ public class MoneyManager : MonoBehaviour
     public void SetMultiplier(int amount)
     {
         moneyAddMultiplier = amount;
-    }
-
-    public void SelectTroop(int index)
-    {
-
-        Debug.Log("a");
-        selectedTroopPivot.SetTroop(null);
     }
 }

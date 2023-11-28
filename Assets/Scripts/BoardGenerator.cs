@@ -6,14 +6,11 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class BoardGenerator : MonoBehaviour
 {
-    [SerializeField]
-    int rows = 9;
-    [SerializeField]
-    int columns = 5;
-    [SerializeField]
-    float offset = 3.6f;
-    [SerializeField]
-    GameObject cellPrefab;
+    public Vector2 cellSize;
+    public int rows = 9;
+    public int columns = 5;
+    public float offset = 3.6f;
+    public GameObject cellPrefab;
     void Start()
     {
 
@@ -31,7 +28,7 @@ public class BoardGenerator : MonoBehaviour
         {
             GameObject nG = new GameObject();
             nG.transform.parent = transform;
-            nG.transform.localPosition = new Vector3(i * offset - columns / 2 * offset, 0, 0);
+            nG.transform.localPosition = new Vector3(i * (cellSize.x + offset) - columns / 2 * (cellSize.x + offset), 0, 0);
             nG.transform.localScale = Vector3.one;
         }
 
@@ -42,7 +39,9 @@ public class BoardGenerator : MonoBehaviour
             if(gameObject.transform != o)
             for (int i = 0; i < rows; i++)
             {
-                Instantiate(cellPrefab, o).transform.localPosition = new Vector3(0, i*offset - rows / 2 * offset, 0);
+                GameObject nG = Instantiate(cellPrefab, o);
+                nG.transform.localPosition = new Vector3(0, i * (cellSize.y + offset) - rows / 2 * (cellSize.y + offset), 0);
+                nG.transform.localScale = cellSize;
             }
         }
 
