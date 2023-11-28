@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3571959281599350426}
   ghost: {fileID: 3568854015773854018, guid: aeeaa84d4f04a49408b87dda3181ebf2, type: 3}
+  price: 10
   health: 100
   attackSpeed: 3
   needsEnemy: 1

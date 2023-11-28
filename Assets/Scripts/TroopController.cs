@@ -10,6 +10,7 @@ public class TroopController : MonoBehaviour, IDamageable
     [SerializeField]
     GameObject ghost;
 
+    public int price;
     [SerializeField]
     private float health;
     [SerializeField]

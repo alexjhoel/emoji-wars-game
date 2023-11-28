@@ -9,6 +9,9 @@ public class SelectedTroopPivot : MonoBehaviour
     [SerializeField]
     BoardGenerator boardGenerator;
 
+    [SerializeField]
+    TroopCreationManager troopCreationManager;
+
     GameObject troopChildGameObject;
 
     GameObject troopPrefab;
@@ -42,10 +45,13 @@ public class SelectedTroopPivot : MonoBehaviour
             Debug.Log("Touch Position : " + touch.position);
         }
 
+        int cI = (int)Mathf.Round(transform.position.x / (boardGenerator.cellSize.x + boardGenerator.offset));
+        int rI = (int)Mathf.Round(transform.position.y / (boardGenerator.cellSize.y + boardGenerator.offset));
+
         Vector2 troopChildPosition = new Vector2
             (
-                Mathf.Round(transform.position.x / (boardGenerator.cellSize.x + boardGenerator.offset)) * (boardGenerator.cellSize.x + boardGenerator.offset),
-                Mathf.Round(transform.position.y / (boardGenerator.cellSize.y + boardGenerator.offset)) * (boardGenerator.cellSize.y + boardGenerator.offset) - 0.38f
+               cI  * (boardGenerator.cellSize.x + boardGenerator.offset),
+               rI  * (boardGenerator.cellSize.y + boardGenerator.offset) - 0.38f
             );
 
         troopChildGameObject.transform.position = troopChildPosition;
@@ -57,13 +63,21 @@ public class SelectedTroopPivot : MonoBehaviour
             troopChildPosition.y > -1 * (boardGenerator.cellSize.y + boardGenerator.offset) - boardGenerator.rows / 2 * (boardGenerator.cellSize.y + boardGenerator.offset)
         ;
 
-        troopChildGameObject.SetActive(insideBoard);
+        cI = cI + boardGenerator.columns / 2;
+        rI = rI + boardGenerator.rows / 2;
 
-        if (dragEnabled && insideBoard && Input.GetMouseButtonUp(0))
+
+        troopChildGameObject.SetActive(insideBoard && troopCreationManager.isCellEmpty(cI, rI));
+
+
+
+        Debug.Log(cI + "" + rI);
+
+        if (troopCreationManager.isCellEmpty(cI,rI) && dragEnabled && Input.GetMouseButtonUp(0))
         {
             dragEnabled = false;
             Destroy(troopChildGameObject);
-            Instantiate(troopPrefab, null, true).transform.position = troopChildPosition;
+            troopCreationManager.CreateTroop(cI,rI, troopChildPosition);
         }
 
 

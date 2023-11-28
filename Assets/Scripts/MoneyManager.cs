@@ -15,9 +15,9 @@ public class MoneyManager : MonoBehaviour
     private TMP_Text moneyText ;
 
 
-    private float money = 0;
-    private float moneyAdd = 1;
-    private int moneyAddMultiplier = 1;
+    private float money = 100;
+    private float totalToAdd = 1;
+    private int moneyToAddMultiplier = 1;
     [SerializeField]
     private int multiplierValue;
 
@@ -32,8 +32,8 @@ public class MoneyManager : MonoBehaviour
         //Moneyadd: la cantidad de dinero que se sumará por frame
         //MoneyAddMultiplier: cantidad de generadores de dinero en el tablero
         //Multiplier value: valor de mulitiplicación por generador
-        moneyAdd = moneyAddMultiplier * multiplierValue;
-        money += moneyAdd * Time.deltaTime;
+        totalToAdd = moneyToAddMultiplier * multiplierValue;
+        money += totalToAdd * Time.deltaTime;
         UpdateUI();
     }
 
@@ -46,7 +46,7 @@ public class MoneyManager : MonoBehaviour
 
     public void SpendMoney(float amount)
     {
-        money -= amount;
+        money -= amount * 10;
     }
 
     public void SetMoney(float amount)
@@ -56,21 +56,21 @@ public class MoneyManager : MonoBehaviour
 
     public float GetMoney()
     {
-        return money;
+        return money / 10;
     }
 
     public void AddMultiplier()
     {
-        moneyAddMultiplier ++;
+        moneyToAddMultiplier ++;
     }
 
     public void RemoveMultiplier()
     {
-        moneyAddMultiplier--;
+        moneyToAddMultiplier--;
     }
 
     public void SetMultiplier(int amount)
     {
-        moneyAddMultiplier = amount;
+        moneyToAddMultiplier = amount;
     }
 }
