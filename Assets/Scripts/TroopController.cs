@@ -54,6 +54,7 @@ public class TroopController : MonoBehaviour, IDamageable
     public void CreateProjectile()
     {
         //Event de creación de proyectil mandado por la animación
+        if (projectilePrefab == null) return;
         GameObject projectile = Instantiate(projectilePrefab, transform, true);
         projectile.SetActive(true);
     }

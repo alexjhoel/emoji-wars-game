@@ -93,8 +93,10 @@ public class SelectedTroopPivot : MonoBehaviour
        troopChildGameObject.GetComponent<TroopController>().enabled = false;
        troopChildGameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-        troopChildGameObject.GetComponentsInChildren<SpriteRenderer>()[0].color = new Color(255, 255, 255, 0.7f);
-        troopChildGameObject.GetComponentsInChildren<SpriteRenderer>()[1].color = new Color(255, 255, 255, 0.7f);
+        foreach (SpriteRenderer spriteRenderer in troopChildGameObject.GetComponentsInChildren<SpriteRenderer>())
+        {
+            spriteRenderer.color = new Color(255, 255, 255, 0.7f);
+        }
 
     }
 }

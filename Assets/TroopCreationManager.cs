@@ -41,6 +41,7 @@ public class TroopCreationManager : MonoBehaviour
             return;
         }
         selectedTroopPivot.SetTroop(troopList[index]);
+        Debug.Log(index);
         selectedTroop = troopList[index];
     }
 
@@ -55,6 +56,16 @@ public class TroopCreationManager : MonoBehaviour
         moneyManager.SpendMoney(selectedTroop.GetComponent<TroopController>().price);
         createdTroops[cI,rI] = Instantiate(selectedTroop, position, Quaternion.identity);
 
+    }
+
+    public int GetMoneyGenerators()
+    {
+        int i = 0;
+        foreach (GameObject troop in createdTroops)
+        {
+            if (troop != null && troop.transform.tag == "MoneyGenerator") i++;
+        }
+        return i;
     }
 
 }

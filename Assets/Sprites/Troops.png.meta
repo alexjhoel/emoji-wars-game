@@ -431,6 +431,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Money_Icon
+      rect:
+        serializedVersion: 2
+        x: 7979
+        y: 3
+        width: 418
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5978bafef04f7194399c99dd2f121032
+      internalID: 2141986915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -443,6 +464,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Money: 2119731305
+      Money_Icon: 2141986915
       Bomb: 1423551603
       Chiller: -1627148685
       Shooter_Gun: -369435464
