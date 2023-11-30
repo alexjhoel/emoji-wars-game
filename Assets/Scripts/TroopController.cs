@@ -63,7 +63,7 @@ public class TroopController : MonoBehaviour, IDamageable
     {
         //Recibir daño por parte de proyectiles
         currentHealth -= damage;
-        Debug.Log("Tropa: " + currentHealth);
+        //Debug.Log("Tropa: " + currentHealth);
         if (currentHealth <= 0)
         {
             GameObject newGhost = Instantiate(ghost, null);

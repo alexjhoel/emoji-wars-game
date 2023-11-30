@@ -45,33 +45,21 @@ public class SelectedTroopPivot : MonoBehaviour
             Debug.Log("Touch Position : " + touch.position);
         }
 
-        int cI = (int)Mathf.Round(transform.position.x / (boardGenerator.cellSize.x + boardGenerator.offset));
-        int rI = (int)Mathf.Round(transform.position.y / (boardGenerator.cellSize.y + boardGenerator.offset));
+        
 
-        Vector2 troopChildPosition = new Vector2
-            (
-               cI  * (boardGenerator.cellSize.x + boardGenerator.offset),
-               rI  * (boardGenerator.cellSize.y + boardGenerator.offset) - 0.38f
-            );
+        Vector2 nearestCell = boardGenerator.getNearestCell(transform.position);
+        int cI = (int)nearestCell.x;
+        int rI = (int)nearestCell.y;
+
+        Vector2 troopChildPosition = boardGenerator.getCellPosition(cI, rI);
 
         troopChildGameObject.transform.position = troopChildPosition;
 
-        bool insideBoard =
-            troopChildPosition.x > -1 * (boardGenerator.cellSize.x + boardGenerator.offset) - boardGenerator.columns / 2 * (boardGenerator.cellSize.x + boardGenerator.offset) &&
-            troopChildPosition.x < (boardGenerator.columns) * (boardGenerator.cellSize.x + boardGenerator.offset) - boardGenerator.columns / 2 * (boardGenerator.cellSize.x + boardGenerator.offset) &&
-            troopChildPosition.y < (boardGenerator.rows - 1) * (boardGenerator.cellSize.y + boardGenerator.offset) - boardGenerator.rows / 2 * (boardGenerator.cellSize.y + boardGenerator.offset) &&
-            troopChildPosition.y > -1 * (boardGenerator.cellSize.y + boardGenerator.offset) - boardGenerator.rows / 2 * (boardGenerator.cellSize.y + boardGenerator.offset)
-        ;
-
-        cI = cI + boardGenerator.columns / 2;
-        rI = rI + boardGenerator.rows / 2;
-
+        bool insideBoard = boardGenerator.isInsideBoard(troopChildPosition);
 
         troopChildGameObject.SetActive(insideBoard && troopCreationManager.isCellEmpty(cI, rI));
 
-
-
-        Debug.Log(cI + "" + rI);
+        Debug.Log(cI + " " + rI);
 
         if (troopCreationManager.isCellEmpty(cI,rI) && dragEnabled && Input.GetMouseButtonUp(0))
         {

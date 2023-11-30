@@ -5,7 +5,6 @@ using UnityEngine;
 public class TroopCreationManager : MonoBehaviour
 {
 
-    [SerializeField]
     private BoardGenerator boardGenerator;
 
     [SerializeField]
@@ -25,6 +24,7 @@ public class TroopCreationManager : MonoBehaviour
 
     private void Start()
     {
+        boardGenerator = GetComponent<BoardGenerator>();
         moneyManager = GetComponent<MoneyManager>();
         createdTroops = new GameObject[boardGenerator.columns, boardGenerator.rows];
     }
