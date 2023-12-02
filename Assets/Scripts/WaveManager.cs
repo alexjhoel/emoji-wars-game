@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
+
     [SerializeField]
     private Image waveBar; 
 
+    private GameManager gameManager;
     private BoardGenerator boardGenerator;
     
     public List<WaveData> waves = new List<WaveData>();
@@ -25,6 +27,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         boardGenerator = GetComponent<BoardGenerator>();
+        gameManager = GetComponent<GameManager>();
         timeToSpawn = waves[0].delay;
 
         waves.ForEach(x => totalEnemiesToSpawn+= x.enemiesList.Count) ;
@@ -62,7 +65,7 @@ public class WaveManager : MonoBehaviour
                 //Método Shuffle creado en la clase RandomExtensions, randomizamos la wave de enemigos
                 eListToSpawn.Shuffle();
 
-                StartCoroutine(SpawnWaveCoroutine(i / 5 * 1.5f, eListToSpawn));
+                StartCoroutine(SpawnWaveCoroutine(i / 5 * 2.5f, eListToSpawn));
             }
             if(waveIndex < waves.Count - 1)
                 timeToSpawn = timer + waves[waveIndex + 1].delay;
@@ -82,10 +85,23 @@ public class WaveManager : MonoBehaviour
 
     private void CheckSpawnedEnemies()
     {
-        if(!spawnedEnemies.Any(x => x != null) && waveIndex < waves.Count && waveIndex != 0)
+        if(!spawnedEnemies.Any(x => x != null))
         {
-            Debug.Log("huh?");
-            timeToSpawn = 0;
+            if(waveIndex < waves.Count && waveIndex != 0)
+            {
+                timeToSpawn = 0;
+            }
+
+            if(waveIndex >= waves.Count)
+            {
+                gameManager.WinGame();
+            }
+            
+        }
+
+        if(spawnedEnemies.Any(x => x != null && boardGenerator.isInBase(x.transform.position.y)))
+        {
+            gameManager.GameOver();
         }
     }
 
@@ -94,7 +110,7 @@ public class WaveManager : MonoBehaviour
         for (int y = 0; y < eListToSpawn.Count; y++)
         {
             if (eListToSpawn[y] == null) continue;
-            Vector2 pos = boardGenerator.getCellPosition(y, boardGenerator.rows + 2);
+            Vector2 pos = boardGenerator.getCellPosition(y, boardGenerator.rows + 1);
             GameObject enemyGameObject = Instantiate(eListToSpawn[y], null);
             enemyGameObject.transform.position = pos;
             spawnedEnemies.Add(enemyGameObject);

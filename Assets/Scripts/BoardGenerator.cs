@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 [ExecuteInEditMode]
 public class BoardGenerator : MonoBehaviour
@@ -78,5 +79,11 @@ public class BoardGenerator : MonoBehaviour
             pos.x < (columns) * (cellSize.x + offset) - columns / 2 * (cellSize.x + offset) &&
             pos.y < (rows - 1) * (cellSize.y + offset) - rows / 2 * (cellSize.y + offset) &&
             pos.y > -1 * (cellSize.y + offset) - rows / 2 * (cellSize.y + offset);
+    }
+
+    public bool isInBase(float y)
+    {
+        Debug.Log(y + " " + (-1 * (cellSize.y + offset) - rows / 2 * (cellSize.y + offset)));
+        return y < -1 * (cellSize.y + offset) - rows / 2 * (cellSize.y + offset);
     }
 }

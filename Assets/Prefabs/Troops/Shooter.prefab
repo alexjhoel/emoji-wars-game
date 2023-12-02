@@ -237,7 +237,7 @@ MonoBehaviour:
   stats:
     damage: 15
     speed: 20
-    range: 5
+    range: 10
     areaOfEffect: 0
     type: 0
 --- !u!50 &3571959281911349714
