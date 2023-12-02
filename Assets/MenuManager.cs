@@ -12,6 +12,10 @@ public class MenuManager : MonoBehaviour
     public AudioSource sonidoClick;
     public AudioClip audioClip;
 
+    public RawImage img;
+    public float x;
+    public float y;
+
     public void jugar(string escena)
     {
         StartCoroutine(esperarSonido(escena)); 
@@ -39,6 +43,6 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        img.uvRect = new Rect(img.uvRect.position + new Vector2(x, y)*Time.deltaTime, img.uvRect.size);
     }
 }
