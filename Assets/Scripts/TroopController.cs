@@ -10,6 +10,7 @@ public class TroopController : MonoBehaviour, IDamageable
     [SerializeField]
     GameObject ghost;
 
+    public int price;
     [SerializeField]
     private float health;
     [SerializeField]
@@ -53,6 +54,7 @@ public class TroopController : MonoBehaviour, IDamageable
     public void CreateProjectile()
     {
         //Event de creación de proyectil mandado por la animación
+        if (projectilePrefab == null) return;
         GameObject projectile = Instantiate(projectilePrefab, transform, true);
         projectile.SetActive(true);
     }
@@ -61,7 +63,7 @@ public class TroopController : MonoBehaviour, IDamageable
     {
         //Recibir daño por parte de proyectiles
         currentHealth -= damage;
-        Debug.Log("Tropa: " + currentHealth);
+        //Debug.Log("Tropa: " + currentHealth);
         if (currentHealth <= 0)
         {
             GameObject newGhost = Instantiate(ghost, null);

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using static Unity.VisualScripting.Member;
-//using UnityEditor.SearchService;
+//using UnityEditor.SearchService; //porque no deja hacer build
 
 public class MenuManager : MonoBehaviour
 {
@@ -43,6 +43,6 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        img.uvRect = new Rect(img.uvRect.position + new Vector2(x, y)*Time.deltaTime, img.uvRect.size);
+        img.uvRect = new Rect(img.uvRect.position + new Vector2(x, y) * Time.deltaTime, img.uvRect.size);
     }
 }

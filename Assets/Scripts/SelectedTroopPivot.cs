@@ -73,7 +73,7 @@ public class SelectedTroopPivot : MonoBehaviour
 
     public void SetTroop(GameObject troopPrefab)
     {
-       //cellDetected = false;
+       //cellDetected = false; //Para que no genere un warning.
        dragEnabled = true;
        this.troopPrefab = troopPrefab;
        troopChildGameObject = Instantiate(troopPrefab, transform, false);

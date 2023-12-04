@@ -20,6 +20,11 @@ public class ProjectileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         //Diferentes tipos de movimientos segun projectiletype
         //TO DO: Destruir gameObject cuando este fuera de rango
         //TO DO: Crear mas comportamientos

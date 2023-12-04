@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using static UnityEditor.PlayerSettings; //porque daba error al build
+//using static UnityEditor.PlayerSettings; //porque no deja hacer build
 
 [ExecuteInEditMode]
 public class BoardGenerator : MonoBehaviour

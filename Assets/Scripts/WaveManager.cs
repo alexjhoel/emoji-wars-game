@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour
     public List<WaveData> waves = new List<WaveData>();
 
     private List<GameObject> spawnedEnemies = new List<GameObject>();
-    //bool readyToSpawn = true;
+    //bool readyToSpawn = true; //Para que no genere un warning.
     float timer = 0;
     float timeToSpawn = 0;
     int waveIndex = 0;
